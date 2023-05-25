@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container > div{
+            margin: 10px;
+        }
+
+        table{
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+            text-align: start;
+        }
+    </style>
+</head>
+<body class="container">
+    <h3>Tạo bảng tự động</h3>
+    <div>
+        <label for="">Số hàng: </label>
+        <input type="number" value="" id="row">
+    </div>
+
+    <div>
+        <label for="">Số cột: </label>
+        <input type="number" value="" id="column">
+    </div>
+
+    <div>
+        <button onclick="crTable()">Tạo bảng tự động</button>
+    </div>
+    Kết quả:
+    <div id="target">
+        <table id="tb">
+            
+        </table>
+    </div>
+    
+
+    <script>
+        function crTable(){
+            var c = document.getElementById('column').value;
+            var r = document.getElementById('row').value;
+            var crCol = '';
+            var crRo = '';
+            for(var x = 1; x <= r; x++){
+                
+                for(var y = 1; y <= c; y++){
+                    if(x == 1){
+                        crRo =crRo + "<th>" + "Cột " + y +  "</th>"; 
+                    } else{
+                        crRo =crRo + "<td>Hàng " + (x - 1) + " Cột " + y +  "</td>";
+                    }
+                }
+                crCol =crCol + "<tr id = '" + x + "'>" + crRo + "</tr>";
+                crRo = '';
+            }
+            document.getElementById('tb').innerHTML = crCol; 
+            console.log(crCol);
+        }
+    </script>
+
+
+</body>
+</html>
+
